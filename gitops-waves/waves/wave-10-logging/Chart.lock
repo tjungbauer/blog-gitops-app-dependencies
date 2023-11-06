@@ -1,0 +1,9 @@
+dependencies:
+- name: openshift-logging
+  repository: file://../../../../helm-charts/charts/openshift-logging
+  version: 1.0.21
+- name: helper-loki-bucket-secret
+  repository: https://charts.stderr.at/
+  version: 1.0.1
+digest: sha256:24bb9a6ad3237a325d786d2306651e3442bdf12f7214c80b4dafc508d6ba4980
+generated: "2023-11-05T05:20:46.307147+01:00"

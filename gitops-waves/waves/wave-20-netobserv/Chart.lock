@@ -1,0 +1,12 @@
+dependencies:
+- name: helper-operator
+  repository: https://charts.stderr.at/
+  version: 1.0.18
+- name: helper-status-checker
+  repository: https://charts.stderr.at/
+  version: 3.0.6
+- name: helper-loki-bucket-secret
+  repository: https://charts.stderr.at/
+  version: 1.0.2
+digest: sha256:9b322d710153ffbf1de1ba05797885be2d5ee433d8185ce7ec15038c4fc43ff4
+generated: "2023-11-06T09:50:14.593378+01:00"
