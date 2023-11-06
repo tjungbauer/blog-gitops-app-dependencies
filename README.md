@@ -67,11 +67,11 @@ The following configuration can be added to the **openshift-gitops** operator
       kind: Application
 ```
 
-If you do not use the Operator you can add the same configuration to the Argo CD ConfigMap **argocd-cm**
+If you do not use the Operator, you can add the same configuration to the Argo CD ConfigMap **argocd-cm**
 
 The syntax of such health checks is described at [Custom Health Checks](]https://argo-cd.readthedocs.io/en/stable/operator-manual/health/#argocd-app).
 
-Bascially it verifies if the status is healthy and reports this status to Argo CD.
+Bascially, it verifies if the status is healthy and reports this status to Argo CD.
 
 ## Demo
 Let's create an example. As described above I would like to create some waves that deploy the services in the following order:
