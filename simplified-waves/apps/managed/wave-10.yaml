@@ -1,20 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: in-cluster-wave-1
+  name: in-cluster-wave-10
   namespace: openshift-gitops
   annotations:
-    argocd.argoproj.io/sync-wave: "1"
+    argocd.argoproj.io/sync-wave: "10"
 spec:
   destination:
     name: in-cluster
     namespace: default
   info:
     - name: Description
-      value: Application to prepare stuff (Wave 0) and deploy LokiStack Operator.
+      value: Example (sync) wave 10
   project: in-cluster
   source:
-    path: gitops-waves/waves/wave-0-loki-operator
+    path: simplified-waves/waves/wave-10
     repoURL: 'https://github.com/tjungbauer/blog-gitops-app-dependencies'
     targetRevision: main
   syncPolicy:

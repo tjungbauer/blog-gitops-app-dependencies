@@ -11,10 +11,10 @@ spec:
     namespace: default
   info:
     - name: Description
-      value: Application to prepare stuff (Wave 0) and deploy LokiStack Operator.
+      value: Example (sync) wave 1
   project: in-cluster
   source:
-    path: gitops-waves/waves/wave-0-loki-operator
+    path: gitops-waves/waves/wave-0
     repoURL: 'https://github.com/tjungbauer/blog-gitops-app-dependencies'
     targetRevision: main
   syncPolicy:

@@ -106,7 +106,7 @@ spec:
   project: in-cluster
   source:
     path: gitops-waves/apps/managed
-    repoURL: 'https://github.com/tjungbauer/test-app-of-apps'
+    repoURL: 'https://github.com/tjungbauer/blog-gitops-app-dependencies'
     targetRevision: main
   syncPolicy:
     syncOptions:
