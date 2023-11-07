@@ -8,6 +8,6 @@ spec:
       containers:
       - name: sleep
         image: registry.redhat.io/openshift4/ose-cli:latest
-        command: ["sleep", "60"]
+        command: ["sleep", "15"]
       restartPolicy: Never
   backoffLimit: 0
