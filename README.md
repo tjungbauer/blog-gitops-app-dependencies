@@ -57,9 +57,9 @@ The following configuration can be added to the **openshift-gitops** operator:
             end
           end
           if obj.status.operationState ~= nil then
-            if obj.status.operationState.phase == "Running" then 
+            if obj.status.operationState.phase == "Running" or obj.status.operationState.phase == "Terminating" then 
               hs.status = "Progressing"
-            elseif obj.status.operationState.phase == "Degraded" then
+            elseif obj.status.operationState.phase == "Degraded" or obj.status.operationState.phase == "Error" or obj.status.operationState.phase == "Failed" then
               hs.status = "Degraded"
               if obj.status.operationState.message ~= nil then
                 hs.message = obj.status.operationState.message
