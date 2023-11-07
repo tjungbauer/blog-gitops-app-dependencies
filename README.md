@@ -57,26 +57,18 @@ The following configuration can be added to the **openshift-gitops** operator:
             end
           end
           if obj.status.operationState ~= nil then
-            if obj.status.operationState.syncResult ~= nil then
-              if obj.status.operationState.syncResult.resources ~= nil then
-                for i, syncresult in ipairs(obj.status.operationState.syncResult.resources) do
-                  if syncresult.hookPhase == "Running" and obj.status.operationState.phase == "Running" then 
-                    hs.status = "Progressing"
-                    if syncresult.syncPhase == "PostSync" then
-                       hs.message = "Waiting for PostSync to complete"
-                    elseif syncresult.syncPhase == "PreSync" then
-                      hs.message = "Waiting for PreSync to complete"
-                    else
-                      hs.message = "Waiting for Sync to complete"
-                    end
-                  elseif obj.status.operationState.phase == "Succeeded" then
-                    hs.status = obj.status.health.status
-                  else
-                    hs.status = "Unknown"
-                  end
-                end
+            if obj.status.operationState.phase == "Running" then 
+              hs.status = "Progressing"
+            elseif obj.status.operationState.phase == "Degraded" then
+              hs.status = "Degraded"
+              if obj.status.operationState.message ~= nil then
+                hs.message = obj.status.operationState.message
               end
-            end          
+            elseif obj.status.operationState.phase == "Succeeded" then
+              hs.status = obj.status.health.status
+            else
+              hs.status = "Unknown"
+            end
           end
         end
         if obj.status.sync.status == "Unknown" then
