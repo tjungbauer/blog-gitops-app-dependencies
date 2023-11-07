@@ -4,7 +4,7 @@
 
 Working with Argo CD and leveraging the GitOps approach is a great way to manage the configurations of your different clusters.
 Since ApplicationSets, it is easy to automatically create different Argo CD Application objects that are rolled out to the environments. However, sometimes it happens that 
-a service depends on other services before it can be deployed. By design, an Application is completely autonomous and does not know the status of another Applications. Therefore, it will be challenging to configure Application dependencies and let Argo CD know when to start the deployment of the next service. 
+a service depends on other services before it can be deployed. By design, an Application is completely autonomous and does not know the status of other Applications. Therefore, it will be challenging to configure Application dependencies and let Argo CD know when to start the deployment of the next service. 
 
 For example, before OpenShift-Logging can be configured, the Loki Operator and a LokiStack object must have been created. You could now create a single Application object that
 is responsible for both services. The problem is however that other services depend on Loki too, like the Netobserv Operator. Bundling this into the same Application will become confusing at some point as a single Argo CD Application gets huge. 
