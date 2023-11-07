@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: sync
+  name: wave-20
 spec:
   template:
     spec:
