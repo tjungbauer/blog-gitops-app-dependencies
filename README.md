@@ -69,6 +69,16 @@ The following configuration can be added to the **openshift-gitops** operator:
             else
               hs.status = "Unknown"
             end
+          else
+            -- for the main App of Apps that does not automatically sync the Apps.
+            if obj.status.sync.status == "OutOfSync" and obj.status.health.status == "Healthy" then
+              hs.status = "Missing"
+              hs.message = "Out of Sync"
+            end
+            if obj.status.sync.status == "OutOfSync" and obj.status.health.status == "Missing" then
+              hs.status = "Missing"
+              hs.message = "Out of Sync"
+            end
           end
         end
         if obj.status.sync.status == "Unknown" then
