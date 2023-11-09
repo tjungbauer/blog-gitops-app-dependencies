@@ -76,7 +76,7 @@ The following configuration can be added to the **openshift-gitops** operator (T
             -- <5>
             elseif obj.status.operationState.phase == "Succeeded" then
               hs.status = obj.status.health.status
-            -- everything else is Unkown
+            -- everything else is Unknown
             -- <6>
             else
               hs.status = "Unknown"
@@ -122,7 +122,7 @@ If you do not use the Operator, you can add the same configuration to the Argo C
 The check above has been extended compared to the documented check at [Argo CD](https://argo-cd.readthedocs.io/en/stable/operator-manual/health/#argocd-app).
 The default check simply verifies if there is the field "*obj.status.health.status*" and returns this value. However, to really work with waves and to also take care of **PostSync hooks**, we need to observe the field "*obj.status.operationState*.phase" and to make other App-of-Apps work we also need to compare other fields and states to return the correct state of an Application. 
 
-**NOTE**: By default, an Argo CD Application is considered "healthy" when the **Sync** phase is finished and it does not care about possible **PostSync** hook ([Hook Documentation](https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/)). This is the reason why there are a lot of "ifs" in the check above, which are required to manage PostSync phases too. If you do not verify the **PostSync** status the Application will report a healthy status back, although PostSync is still being executed ... and we want to whole Application to finish before we do anything else.
+**NOTE**: By default, an Argo CD Application is considered "healthy" when the **Sync** phase is finished and it does not care about possible **PostSync** hook ([Hook Documentation](https://argo-cd.readthedocs.io/en/stable/user-guide/resource_hooks/)). This is the reason why there are a lot of "ifs" in the check above, which are required to manage PostSync phases too. If you do not verify the **PostSync** status the Application will report a healthy status back, although PostSync is still being executed ... and we want the whole Application to finish before we do anything else.
 
 ## Demo - Simplified
 I have prepared a very simple example of these waves in the folder: [simplified-waves](https://github.com/tjungbauer/blog-gitops-app-dependencies/tree/main/simplified-waves). 
