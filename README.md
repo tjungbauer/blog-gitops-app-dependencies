@@ -87,12 +87,16 @@ The following configuration can be added to the **openshift-gitops** operator (T
             if obj.status.sync.status == "OutOfSync" and obj.status.health.status == "Healthy" then
               hs.status = "Missing"
               hs.message = "Out of Sync"
+            else
+              hs.status = "Healthy"
             end
             -- Compare if status is Missing and sync.status is OutOfSync
             -- <8>
             if obj.status.sync.status == "OutOfSync" and obj.status.health.status == "Missing" then
               hs.status = "Missing"
               hs.message = "Out of Sync"
+            else
+              hs.status = "Healthy"
             end
           end
         end
